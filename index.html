@@ -33,6 +33,35 @@
       <section id="main_content" class="inner">
         <h3>
 <a name="heatrow----color-your-selenium-reports" class="anchor" href="#heatrow----color-your-selenium-reports"><span class="octicon octicon-link"></span></a>HeatRow  - color your Selenium reports</h3>
+<article class="markdown-body entry-content" itemprop="mainContentOfPage"><p><a href="https://travis-ci.org/andrebrov/HeatRow"><img src="https://travis-ci.org/andrebrov/HeatRow.png?branch=master" alt="Build Status" style="max-width:100%;"></a></p>
+
+<h3>
+<a name="heatrow" class="anchor" href="#heatrow"><span class="octicon octicon-link"></span></a>HeatRow</h3>
+
+<p>Goal of this selenium plugin is to create visual reports that will show you what elements of UI are covered (clicked, changed) by tests. 
+Initial version of this library just show what was covered, next version will create heat map that should show how often each element was clicked.</p>
+
+<h3>
+<a name="how-to-add-this-library-yo-project" class="anchor" href="#how-to-add-this-library-yo-project"><span class="octicon octicon-link"></span></a>How to add this library yo project</h3>
+
+<p>First of all add next maven artifact:</p>
+
+<pre><code>&lt;dependency&gt;
+    &lt;groupId&gt;com.mindgames&lt;/groupId&gt;
+    &lt;artifactId&gt;heatrow&lt;/artifactId&gt;
+    &lt;version&gt;1.0.1-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>Then you should add HeatRowEventListener to your driver, for example:</p>
+
+<div class="highlight"><pre><span class="n">WebDriver</span> <span class="n">driver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">FirefoxDriver</span><span class="o">();</span>
+<span class="n">EventFiringWebDriver</span> <span class="n">eventDriver</span> <span class="o">=</span> <span class="k">new</span> <span class="n">EventFiringWebDriver</span><span class="o">(</span><span class="n">driver</span><span class="o">);</span>
+<span class="n">HeatRowEventListener</span> <span class="n">listener</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HeatRowEventListener</span><span class="o">();</span>
+<span class="n">eventDriver</span><span class="o">.</span><span class="na">register</span><span class="o">(</span><span class="n">listener</span><span class="o">);</span>
+</pre></div>
+
+<p>When all tests passed you should call getReports() method that will generate reports in /screenshots folder</p></article>
       </section>
     </div>
 
