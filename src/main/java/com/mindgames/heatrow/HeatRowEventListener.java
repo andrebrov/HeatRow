@@ -46,8 +46,9 @@ public class HeatRowEventListener implements WebDriverEventListener {
     private Page takeScreenshot(WebDriver driver) {
         try {
             File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            String path = "./target/screenshots/" + source.getName();
+            String path = "./screenshots/" + source.getName();
             File destFile = new File(path);
+            new File("./screenshots/").mkdirs();
             destFile.createNewFile();
             FileUtils.copyFile(source, destFile);
             Page page = new Page();

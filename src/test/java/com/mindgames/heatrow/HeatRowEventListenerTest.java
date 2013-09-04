@@ -7,6 +7,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.imageio.ImageIO;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
@@ -40,7 +43,19 @@ public class HeatRowEventListenerTest {
         when(element.getLocation()).thenReturn(point);
         when(element.getSize()).thenReturn(dimension);
         driver = mock(WebDriver.class, withSettings().extraInterfaces(TakesScreenshot.class));
-        file = new File("./screenshot3081191719106742582.png");
+        file = new File("./screenshot.png");
+        int width = 200, height = 200;
+        BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D ig2 = bi.createGraphics();
+        Font font = new Font("TimesRoman", Font.BOLD, 20);
+        ig2.setFont(font);
+        String message = "www.java2s.com!";
+        FontMetrics fontMetrics = ig2.getFontMetrics();
+        int stringWidth = fontMetrics.stringWidth(message);
+        int stringHeight = fontMetrics.getAscent();
+        ig2.setPaint(Color.black);
+        ig2.drawString(message, (width - stringWidth) / 2, height / 2 + stringHeight / 4);
+        ImageIO.write(bi, "PNG", file);
         when(((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE)).thenReturn(file);
     }
 
@@ -52,7 +67,7 @@ public class HeatRowEventListenerTest {
         assertEquals("Wrong amount of locations elements", 1, locations.size());
         Location location = (Location) locations.toArray()[0];
         assertEquals("Wrong top left point", new Point(10, 20), location.getTopLeftPoint());
-        assertEquals("Wrong bottom right point", new Point(60, 60), location.getDimension());
+        assertEquals("Wrong bottom right point", new Dimension(50, 40), location.getDimension());
     }
 
     @Test
@@ -71,7 +86,7 @@ public class HeatRowEventListenerTest {
         assertEquals("Wrong amount of locations elements", 1, locations.size());
         Location location = (Location) locations.toArray()[0];
         assertEquals("Wrong top left point", new Point(10, 20), location.getTopLeftPoint());
-        assertEquals("Wrong bottom right point", new Point(60, 60), location.getDimension());
+        assertEquals("Wrong bottom right point", new Dimension(50, 40), location.getDimension());
     }
 
     @Test
@@ -110,6 +125,7 @@ public class HeatRowEventListenerTest {
 
     @AfterMethod
     public void tearDown() {
+        file.delete();
     }
 
 }
