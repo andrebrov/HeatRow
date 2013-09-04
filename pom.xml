@@ -20,7 +20,7 @@
 
     <scm>
         <connection>scm:git:git://github.com/andrebrov/HeatRow.git</connection>
-        <developerConnection>scm:git:git@github.com:andrebrov/HeatRow.gitt</developerConnection>
+        <developerConnection>scm:git:git@github.com:andrebrov/HeatRow.git</developerConnection>
         <url>http://github.com/andrebrov/HeatRow</url>
     </scm>
 
