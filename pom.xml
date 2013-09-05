@@ -10,7 +10,7 @@
 
     <groupId>net.andrebrov</groupId>
     <artifactId>heatrow</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3-SNAPSHOT</version>
 
     <name>HeatRow</name>
     <description>HeatRow library helps in showing UI tests coverage.</description>
