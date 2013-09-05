@@ -9,9 +9,9 @@ First of all add next maven artifact:
 
 ```
 <dependency>
-    <groupId>com.mindgames</groupId>
-    <artifactId>heatrow</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+  <groupId>net.andrebrov</groupId>
+  <artifactId>heatrow</artifactId>
+  <version>1.0.2</version>
 </dependency>
 ```
 
